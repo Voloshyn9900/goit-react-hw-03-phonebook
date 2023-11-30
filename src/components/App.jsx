@@ -21,18 +21,17 @@ export class App extends Component {
 
   componentDidMount(prevProps, prevState) {
     const savedContacts = localStorage.getItem(localstorageKey);
-    console.log(savedContacts);
+
 
     if (savedContacts !== null) {
       const newContacts = JSON.parse(savedContacts);
       this.setState({ contacts: newContacts })
-      console.log(newContacts);
+    
     }    
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.contacts !== this.state.contacts) {
-      console.log('Write to local storeg');
       localStorage.setItem(
         localstorageKey,
         JSON.stringify(this.state.contacts)
